@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add product</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../fontawesome-free-7.2.0-web/css/all.min.css">
+</head>
+<body>
+    <div class="form-wrapper">
+        <form action="../backend/addproduct.php" method="post" enctype="multipart/form-data">
+            <p>Add Product</p>
+            <div class="input">
+                <i class="fas fa-pen"></i>
+                <input type="text" name="product_name" placeholder="Product name"required>
+            </div>
+
+            <div class="input">
+                <i class="fas fa-cubes"></i>
+                <select name="product_category" id="category">
+                    <option value="">Select category</option>
+                    <option value="Bags">Bags</option>
+                    <option value="Electricals">Electricals</option>
+                </select>
+            </div>
+
+            <div class="input">
+                <i class="fas fa-coins"></i>
+                <input type="text" name="product_price"value="KSH" placeholder="Product price"required>
+            </div>
+
+            <div class="input">
+                <i class="fas fa-image"></i>
+                <input type="file" name="product_image" required>
+            </div>
+
+            <button name="addproduct_btn"id="login_admin"><i class="fas fa-list"></i>     Add Product</button>
+
+        </form>
+    </div>
+</body>
+</html>

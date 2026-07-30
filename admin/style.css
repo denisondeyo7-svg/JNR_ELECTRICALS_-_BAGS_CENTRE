@@ -1,0 +1,381 @@
+body{
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+
+}
+#admin-wrapper{
+    display: flex;
+    align-items: center;
+
+}
+.nav{
+    position: fixed;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    background: navy;
+    width: 15rem;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+#add_message_btn{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    border:1px solid #0c2a3a;
+    background: #0c2a3abe;
+    border-radius: 50px;
+    padding: 10px;
+    color: aqua;
+}
+.nav a{
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 20px;
+}
+.nav a:hover{
+    background: #007bff;
+    
+}
+.hero-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+  
+}
+.hero-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    margin: 22px;
+    gap: 2rem;
+   
+    
+
+}
+.welcome{
+    display: flex;
+    
+}
+.box,.welcome-box{
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px #666;
+    text-align: center;
+}
+.box h2{
+    color: #007bff;
+}
+.box i{
+    font-size: 20px;
+    color: #589c19;
+}
+.content{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 25px;
+}
+.top{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+}
+.product-wrapper{
+    margin: 12px;
+}
+.p_title{
+    background: #007bff;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 550;
+    font-size: 22px;
+    color: #fff;
+    text-align: center;
+    
+    
+}
+.management-card{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.actions{
+    display: flex;
+    gap: 1rem;
+}
+.products{
+    margin: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 12px;
+    box-shadow: 2px 2px 10px #999;
+}
+
+.product-card{
+    border-top: 2px solid #007bff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    box-shadow: 2px 2px 10px #999;
+}
+.category{
+    font-weight: 550;
+    color: #007bff;
+}
+.price{
+
+    font-weight: 550;
+}
+#products_image{
+    height: 12rem;
+    width: 12rem;
+    
+}
+.management_buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+#add_product{
+    padding: 12px;
+    border: none;
+    background: #007bff;
+    border-radius: 5px;
+    color: #fff;
+}#login_admin{
+    padding: 12px;
+    border: none;
+    background: #007bff;
+    border-radius: 5px;
+    color: #fff;
+}
+#go_back{
+    padding: 12px;
+    border: none;
+    background: #f40;
+    color: #fff;
+    border-radius: 5px;
+}
+#deleteproduct_btn{
+    padding: 12px;
+    border: none;
+    background: #f40;
+    color: #fff;
+    
+}
+#exitbtn{
+    padding: 12px;
+    border: none;
+    background: #005;
+    color: #fff;
+}
+#editproduct_btn{
+    padding: 12px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+  
+}
+.form-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    gap: 1rem;
+    box-shadow: 2px 5px 22px #999;
+    width: 20rem;
+    
+}
+form p{
+    text-align: center;
+    font-weight: 500;
+    background: #888;
+    color: #fff;
+    padding: 12px;
+
+}
+.input{
+    margin-left: 12px;
+    display: flex;
+}
+.input i{
+    background: #7a7878;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+input,#category{
+    outline: none;
+    border: 1px solid #c0baba;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 12px;
+    width: 80%;
+    
+}
+input:focus,#category:focus,#reply:focus{
+    border: 2px solid #007bff;
+    border-left: none;
+}
+.message-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh auto;
+}
+.message-box-wrapper{
+    background: whitesmoke;
+    margin: 12px;
+    height: auto;
+    padding: 15px;
+    width: 60%;
+    
+}
+.message-box{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    background: #c9c1c1;
+    border-radius: 10px;
+    
+}
+
+
+
+.message{
+    margin-left: 12px;
+}
+.manage-message-btns{
+    display: flex;
+    gap: 25px;
+}
+#replybtn{
+    border: none;
+    background: transparent;
+    color: #396410;
+}
+#delbtn{
+    border: none;
+    background: transparent;
+    color: #e23024;
+}
+#Editbtn{
+    border: none;
+    background: transparent;
+    color: aqua;
+}
+#delete_btn{
+    padding: 5px;
+    border: none;
+    background: #f40;
+    color: #fff;
+}
+#deletebtn{
+    border: none;
+    background: transparent;
+    color: rgb(36, 189, 189);
+}
+#reply{
+    border: 1px solid #c0baba;
+    outline: none;
+    border-top-right-radius: 5px;
+    height: 4rem;
+    width: 100%;
+}
+.reply{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+}
+.reply-box{
+    padding: 10px;
+    background: #396410;
+    color: #fff;
+    border-radius: 10px;
+}
+.reply_box{
+    padding: 10px;
+    background: #5555554f;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    color: #fff;
+    border-radius: 10px;
+    
+}
+#notification{
+    color: aqua;
+    font-weight: 550;
+    font-size: 16px;
+    
+    
+    
+}
+.table-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+table{
+    text-align: center;
+}
+th{
+    background: #007bff50;
+    padding: 12px;
+}
+tbody:hover{
+    background: #0c2a3a67;
+    color: #fff;
+}
+.card-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.admin-card{
+    display: flex;
+    flex-direction: column;
+    
+    padding: 12px;
+    box-shadow: 2px 2px 10px #999;
+}
+
+
+
+
+
+
+@media (max-width:600px){
+    #admin-wrapper{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .nav{
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+    .content{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+}
