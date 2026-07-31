@@ -225,7 +225,7 @@ section{
 }
 #cartWindow{
     position: fixed;
-    top: -5rem;
+    top: -7rem;
     right:  3rem;
     display: flex;
     flex-direction: column;
@@ -288,12 +288,11 @@ section{
     padding: 12px;
     color: #fff;
 }
-#delete-cart{
+#delete_cart{
     border-radius: 5px;
-    border: none;
-    background: #f70;
+    border: 1px solid #999;
     padding: 12px;
-    color: #fff;
+    color: #f00f;
 }
 #closecart{
     border: none;
@@ -571,18 +570,7 @@ section{
     align-items: center;
     
 }
-.product-name{
-    font-weight: 550;
-}
-.price{
-    font-weight: 550;
-}
-.category{
-    font-weight: 550;
-    color: #f00;
 
-    
-}
 #notification{
     color: #fff;
     background-color: #f40;
@@ -1074,7 +1062,7 @@ input:focus{
 .message-box{
    
     padding: 5px;
-    background: #396410;
+    background: #02473b;
     color: #fff;
     border-radius: 10px;
     width: auto;
@@ -1114,21 +1102,73 @@ marquee{
     color: #ffc500;
     
 }
+.cart-container{
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+}
+.cart-container h2{
+    color: #007bff; 
+    border-bottom: 2px solid #007bff; 
+    padding-bottom: 10px;
+}
+#back2shop{
+    display: inline-block; 
+    margin-bottom: 20px; 
+    color: #007bff; 
+    text-decoration: none;
+}
+table{
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 10px;
+}
+tr{
+    background-color: #f2f2f2; 
+    text-align: left;
+}
+th{
+    padding: 12px; 
+    border: 1px solid #ddd;
+    background: #007bff;
+    color: #fff;
+}
+td{
+    padding: 12px; 
+    border: 1px solid #ddd;
+}
+.total{
+    text-align: right; 
+    margin-top: 20px; 
+    font-size: 1.2rem; 
+    font-weight: bold;
+}
+.our_shop h2{
+    color: #007bff;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#offerform{
+    display: flex;
+    gap: 0;
+    width: 16rem;
+}
+#offerform p{
+    background: none;
+    color: darkcyan;
+}
+.fa-trash{
+    background: rgba(255, 68, 0, 0.295);
+    padding: 5px;
+    border-radius: 5px;
+    color:  #f40;
+    text-align: center;
+}
+.cart_totals{
+    font-weight: 550;
+    
+    
+}
 
 
 

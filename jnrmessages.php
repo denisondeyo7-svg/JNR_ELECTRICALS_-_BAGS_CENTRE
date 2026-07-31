@@ -16,7 +16,7 @@ $select_messages = "SELECT  *,
                     from customers 
 
                     JOIN messages ON 
-                    customers.id = messages.customer_id "; 
+                    customers.id = messages.customer_id ORDER BY messages.id DESC"; 
 
 $results = mysqli_query($connection, $select_messages); 
 ?> 
@@ -40,6 +40,7 @@ $results = mysqli_query($connection, $select_messages);
         </a> 
         
         <?php if($results && mysqli_num_rows($results) > 0){ 
+
             while($row = mysqli_fetch_assoc($results)){ ?> 
                 <div class="message-box"> 
                     <div class="profile_details"> 
@@ -77,7 +78,7 @@ $results = mysqli_query($connection, $select_messages);
                     if($row['status'] == "Read"){ 
                         $reply_style = "background: #0c2a3a; color: #fff;"; 
                     } else { 
-                        $reply_style = "background: ##0000c2a3a; color: #fff;"; 
+                        $reply_style = "background: #333; color: #fff;"; 
                     } 
                     ?> 
                     

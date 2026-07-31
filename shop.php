@@ -1,8 +1,5 @@
 <?php
-
 include("backend/config.php");
-
-
 ?>
 
 <!doctype html>
@@ -16,78 +13,90 @@ include("backend/config.php");
   </head>
   <body>
     <div class="our_shop">
-        <h2 style='color: #007bff;'>Our Shop</h2>
+        <h2>Our Shop</h2>
         <div class="items-wrapper">
+            
+            <!-- Electricals Section -->
             <div class="electricals">
-            <p class="item-category"><small><i class="fas fa-star" id="item_logo"></i>JNR</small>    Electricals   <i class="fas fa-plug"></i></p>
-            <div class="item">
-
-                <?php
-                $select = "SELECT * FROM PRODUCTS where product_category='Electricals'";
-
-                $results = mysqli_query($connection,$select);
-                
-                if($results && mysqli_num_rows($results)>0){
-                    while($row = mysqli_fetch_assoc($results)){?>
-
-                        <div class="product-card">
-                            <div class="img">
-                                <img src="products_images/<?php echo $row['product_image'];?>" alt="Image not availabe" >
-                            </div>
-                            <div class="name">
-                                <p class="product-name"><?php echo $row['product_name'];?></p>
-                                <p class="category"><?php echo $row['product_category'];?></p>
-                                <p class="price"><?php echo $row['product_price'];?></p>
-                            </div>
-                            <a href="backend/orders.php">
-                                <button type="submit" name="addcart" id="cart_btn"><i class="fas fa-shopping-cart"></i>    Add to cart</button>
-                            </a>
-                        </div>
-                    <?php
-                    }   
-                }
-                else{
-                    echo"Products are not available now, come back later";
-                }        
-                ?>
-            </div>
-                
-
-            <div class="bags">
-                <p class="item-category"><small><i class="fas fa-star" id="item_logo"></i>JNR</small>   Bags   <i class="fas fa-shopping-bag"></i></p>
+                <p class="item-category"><small><i class="fas fa-star" id="item_logo"></i>JNR</small>    Electricals   <i class="fas fa-plug"></i></p>
                 <div class="item">
-                
                     <?php
-                    $select = "SELECT * FROM PRODUCTS where product_category='Bags'";
-
-                    $results = mysqli_query($connection,$select);
+                    $select = "SELECT * FROM PRODUCTS where product_category='Electricals'";
+                    $results = mysqli_query($connection, $select);
                     
-                    if($results && mysqli_num_rows($results)>0){
-                        while($row = mysqli_fetch_assoc($results)){?>
-
-                            <div class="product-card">
+                    if($results && mysqli_num_rows($results) > 0){
+                        while($row = mysqli_fetch_assoc($results)){ ?>
+                        
+                            
+                            <form action="backend/orders.php" method="POST" id="offerform"class="product-card">
                                 <div class="img">
-                                    <img src="products_images/<?php echo $row['product_image'];?>" alt="Image not availabe" >
+                                    <img src="products_images/<?php echo $row['product_image'];?>" alt="Image not available">
                                 </div>
                                 <div class="name">
-                                    <p class="product-name"><?php echo $row['product_name'];?></p>
-                                    <p class="category"><?php echo $row['product_category'];?></p>
-                                    <p class="price"><?php echo $row['product_price'];?></p>
+                                    <p><?php echo $row['product_name'];?></p>
+                                    <p><?php echo $row['product_category'];?></p>
+                                    <p><?php echo $row['product_price'];?></p>
                                 </div>
-                                <a href="backend/orders.php">
-                                    <button type="submit" name="addcart" id="cart_btn"><i class="fas fa-shopping-cart"></i>    Add to cart</button>
-                                </a>
-                            </div>
+                                
+                                <!-- Hidden fields pass data to backend orders.php -->
+                                <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+                                <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($row['product_name']); ?>">
+                                <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
+                                
+                                <button type="submit" name="addcart" id="cart_btn">
+                                    <i class="fas fa-shopping-cart"></i> Add to cart
+                                </button>
+                            </form>
                         <?php
                         }   
-                    }
-                    else{
-                        echo"Products are not available now, come back later";
+                    } else {
+                        echo "Products are not available now, come back later";
                     }        
                     ?>
                 </div>
-
             </div>
+                
+            <!-- Bags Section -->
+            <div class="bags">
+                <p class="item-category"><small><i class="fas fa-star" id="item_logo"></i>JNR</small>   Bags   <i class="fas fa-shopping-bag"></i></p>
+                <div class="item">
+                    <?php
+                    $select = "SELECT * FROM PRODUCTS where product_category='Bags'";
+                    $results = mysqli_query($connection, $select);
+                    
+                    if($results && mysqli_num_rows($results) > 0){
+                        while($row = mysqli_fetch_assoc($results)){ ?>
+                            
+                            
+
+                            <form action="backend/orders.php" method="POST" id="offerform" class="product-card">
+                                <div class="img">
+                                    <img src="products_images/<?php echo $row['product_image'];?>" alt="Image not available">
+                                </div>
+                                <div class="name">
+                                    <p><?php echo $row['product_name'];?></p>
+                                    <p><?php echo $row['product_category'];?></p>
+                                    <p><?php echo $row['product_price'];?></p>
+                                </div>
+                                
+                                <!-- Hidden fields pass data to backend orders.php -->
+                                <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+                                <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($row['product_name']); ?>">
+                                <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
+                                
+                                <button type="submit" name="addcart" id="cart_btn">
+                                    <i class="fas fa-shopping-cart"></i> Add to cart
+                                </button>
+                            </form>
+                        <?php
+                        }   
+                    } else {
+                        echo "Products are not available now, come back later";
+                    }        
+                    ?>
+                </div>
+            </div>
+
         </div>
     </div>
 </body>

@@ -80,6 +80,22 @@ if($results && mysqli_num_rows($results)>0){
 
 }
 
+//oders
+
+$my_orders="SELECT count(*) as total_orders FROM orders ";
+
+$results = mysqli_query($connection, $my_orders);
+
+$total_orders = 0;
+
+if($results && mysqli_num_rows($results)>0){
+
+    $row = mysqli_fetch_assoc($results);
+     
+    $total_orders=$row['total_orders'];
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -96,8 +112,8 @@ if($results && mysqli_num_rows($results)>0){
         <div class="nav">
            <a href="index.php"><i class="fas fa-shop"></i>   Dashboard</a>
            <a href="products.php"><i class="fas fa-shopping-cart"></i>   Products</a>
-           <a href=""><i class="fas fa-car"></i>   Orders</a>
-            <a href="messages.php"><i class="fas fa-bell"></i>   Messages   <sup id="notification">   <?php echo $total_messages ?></sup></a>
+           <a href="orders.php"><i class="fas fa-car"></i>   Orders</a>
+           <a href="messages.php"><i class="fas fa-bell"></i>   Messages   <sup id="notification">   <?php echo $total_messages ?></sup></a>
            <a href="customers.php"><i class="fas fa-users"></i>   Customers</a>
            <a href=""><i class="fas fa-credit-card"></i>   Payments</a>
            <a href="../index.php"><i class="fas fa-users"></i>   Clients page</a>
@@ -145,6 +161,15 @@ if($results && mysqli_num_rows($results)>0){
                         </div>
                         <h4><?php echo $total_messages;?><h4>
                     </div>
+                    
+                    <div class="box">
+                        <div class="top">
+                            <p> Total orders</p>
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h4><?php echo $total_orders;?><h4>
+                    </div>
+
 
                     <div class="box">
                         <div class="top">

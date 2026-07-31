@@ -31,6 +31,14 @@ if($results && mysqli_num_rows($results)>0){
 
 }
 
+//cart items
+$total_items = 0;
+if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $item) {
+        $total_items += (int)$item['quantity'];
+    }
+}
+
 ?>
 
 
@@ -63,7 +71,8 @@ if($results && mysqli_num_rows($results)>0){
         <div class="features">
             
             <a href="#"id="open_cart">
-                <i class="fas fa-shopping-cart"></i>Cart
+                <i class="fas fa-shopping-cart"></i>    <sup class="cart_totals"><?php echo $total_items; ?></sup> 
+
             </a>
             
 
@@ -148,9 +157,11 @@ if($results && mysqli_num_rows($results)>0){
                 <a href="cart.php">
                     <button id="view-cart"><i class="fas fa-eye"></i>   View my Cart</button>
                 </a>
-                <a href="">
-                    <button id="delete-cart"><i class="fas fa-trash"></i>   Empty Cart</button>
+
+                <a href="backend/clearall.php" onclick="return confirm('Are you sure you want to empty your cart?');">
+                    <button id="delete_cart"><i class="fa fa-trash"></i> Clear cart</button>
                 </a>
+
                 <button id="closecart">Close</button>
             </div>
 
@@ -200,36 +211,44 @@ We bring quality , genuine and lasting products close to the consumers..</p>
 <br><br>
     <section id="offer"> 
         <h2>New Arrivals</h2>
-        <div class="offers">
-        <?php 
-        $select ="SELECT * FROM products ORDER BY product_id DESC LIMIT 4";
+<div class="offers">
+    <?php 
+    $select ="SELECT * FROM products ORDER BY product_id DESC LIMIT 4";
+    $results = mysqli_query($connection, $select);
+    
+    if($results && mysqli_num_rows($results) > 0){
+        while($row = mysqli_fetch_assoc($results)){ ?>
 
-        $results = mysqli_query($connection,$select);
-        
-        if($results && mysqli_num_rows($results)>0){
-            while($row = mysqli_fetch_assoc($results)){?>
-
-                <div class="offer-card">
-                    <div class="img">
-                        <img src="products_images/<?php echo $row['product_image'];?>" id="products_image"alt="Image not available at this moment">
-                    </div>
-                    <div class="name">
-                        <p class="product-name"><?php echo $row['product_name'];?></p>
-                        <p class="category"><?php echo $row['product_category'];?></p>
-                        <p class="price"><?php echo $row['product_price'];?></p>
-                    </div>
-
-                    <a href="backend/orders.php">
-                        <button type="submit" name="addcart" id="cart_btn"><i class="fas fa-shopping-cart"></i>    Add to cart</button>
-                    </a>
-
+            
+            <form action="backend/orders.php" method="POST"id="offerform" class="offer-card">
+                <div class="img">
+                    <img src="products_images/<?php echo $row['product_image'];?>" id="products_image" alt="Image not available at this moment">
                 </div>
-            <?php
-            }
-        }else{
-            echo"Products are not available at this momnt, come back later";
-        }    
-        ?>
+                <div class="name">
+                    <p><?php echo $row['product_name'];?></p>
+                    <p><?php echo $row['product_category'];?></p>
+                    <p><?php echo $row['product_price'];?></p>
+                </div>
+
+                <!-- Hidden inputs to pass product data to backend/orders.php -->
+                <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+                <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($row['product_name']); ?>">
+                <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
+
+                <!-- Form submit button -->
+                <button type="submit" name="addcart" id="cart_btn">
+                    <i class="fas fa-shopping-cart"></i> Add to cart
+                </button>
+            </form>
+
+        <?php
+        }
+    } else {
+        echo "Products are not available at this momnt, come back later";
+    }    
+    ?>
+            </div>
+
             
 
         </div>
