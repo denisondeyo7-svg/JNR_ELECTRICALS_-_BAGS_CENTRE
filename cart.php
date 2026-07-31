@@ -50,9 +50,9 @@ session_start();
                         ?>
                         <tr>
                             <td><?php echo htmlspecialchars($item['name']); ?></td> 
-                            <td>$<?php echo number_format((float)$clean_price, 2); ?></td>
+                            <td><?php echo number_format((float)$clean_price, 2); ?></td>
                             <td><?php echo $item['quantity']; ?></td>
-                            <td>$<?php echo number_format($item_total, 2); ?></td>
+                            <td><?php echo number_format($item_total, 2); ?></td>
                             <td><a href="backend/deleteorders.php?id=<?php echo $id; ?>"><i class="fa fa-trash"></i></a></td>
                         </tr>
                     <?php } ?>
@@ -61,7 +61,7 @@ session_start();
 
             
             <div class="total">
-                Total: <span style="color: #007bff;">$<?php echo number_format($total_cart_price, 2); ?></span>
+                Total: <span style="color: #007bff;">Kshs   <?php echo number_format($total_cart_price, 2); ?></span>
             </div>
             
             <div style="text-align: right; margin-top: 20px;">
