@@ -1,11 +1,15 @@
 <?php
 
 
+//$host = "sql208.infinityfree.com";
+//$username = "if0_42538586";       
+//$password = "1290Den001";      
+//$dbname = "if0_42538586_jnr_db";
 
-$host = "sql208.infinityfree.com";
-$username = "if0_42538586";       
-$password = "1290Den001";      
-$dbname = "if0_42538586_jnr_db"
+$host = "localhost";
+$username = "root";       
+$password = "";      
+$dbname = "jnr";
 
 $connection = mysqli_connect($host,$username,$password,$dbname);
 
