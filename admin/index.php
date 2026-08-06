@@ -51,6 +51,39 @@ if($results && mysqli_num_rows($results)>0){
     $total_products=$row['total_products'];
 
 }
+
+//electricals 
+$select ="SELECT count(*) as electrical_products FROM products where product_category='Electricals'";
+
+$results = mysqli_query($connection, $select);
+
+$electrical_products= 0;
+
+if($results && mysqli_num_rows($results)>0){
+
+    $row = mysqli_fetch_assoc($results);
+     
+    $electrical_products=$row['electrical_products'];
+
+}
+
+//bags
+
+$select ="SELECT count(*) as bags_products FROM products where product_category='bags'";
+
+$results = mysqli_query($connection, $select);
+
+$bags_products= 0;
+
+if($results && mysqli_num_rows($results)>0){
+
+    $row = mysqli_fetch_assoc($results);
+     
+    $bags_products=$row['bags_products'];
+
+}
+
+
 //registered customers
 $select ="SELECT count(*) as total_customers FROM customers ";
 
@@ -80,19 +113,51 @@ if($results && mysqli_num_rows($results)>0){
 
 }
 
-//oders
+//complete oders
 
-$my_orders="SELECT count(*) as total_orders FROM orders ";
+$my_orders="SELECT count(*) as complete_orders FROM orders where order_status = 'Complete'";
 
 $results = mysqli_query($connection, $my_orders);
 
-$total_orders = 0;
+$complete_orders = 0;
 
 if($results && mysqli_num_rows($results)>0){
 
     $row = mysqli_fetch_assoc($results);
      
-    $total_orders=$row['total_orders'];
+    $complete_orders=$row['complete_orders'];
+
+}
+
+//pending oders
+
+$my_orders="SELECT count(*) as pending_orders FROM orders where order_status = 'pending'";
+
+$results = mysqli_query($connection, $my_orders);
+
+$pending_orders = 0;
+
+if($results && mysqli_num_rows($results)>0){
+
+    $row = mysqli_fetch_assoc($results);
+     
+    $pending_orders=$row['pending_orders'];
+
+}
+
+//sales made
+
+$my_orders="SELECT count(total_amount) as total_sales FROM orders where order_status = 'pending'";
+
+$results = mysqli_query($connection, $my_orders);
+
+$total_sales = 0;
+
+if($results && mysqli_num_rows($results)>0){
+
+    $row = mysqli_fetch_assoc($results);
+     
+    $total_sales=$row['total_sales'];
 
 }
 
@@ -118,7 +183,7 @@ if($results && mysqli_num_rows($results)>0){
            <a href=""><i class="fas fa-credit-card"></i>   Payments</a>
            <a href="testimonials.php"><i class="fas fa-star"></i>   Testimonials    <sup id="notification">   <?php echo $testimonials ?></sup></a>
            <a href="../index.php"><i class="fas fa-users"></i>   Clients page</a>
-           <a href="settings.php"><i class="fas fa-cog"></i>   Settings</a>
+           <a href="settings.php"><i class="fas fa-cog"></i>   Account Settings</a>
         </div>
 
         <div class="hero-wrapper">
@@ -134,7 +199,7 @@ if($results && mysqli_num_rows($results)>0){
                     <div class="box">
                         <div class="top">
                             <p>Admins</p>
-                            <i class="fas fa-cog"></i>
+                            <i class="fas fa-shield"></i>
                         </div>
                         <h4><?php echo $admins;?><h4>
                     </div>
@@ -150,9 +215,41 @@ if($results && mysqli_num_rows($results)>0){
                     <div class="box">
                         <div class="top">
                             <p> Products</p>
-                            <i class="fas fa-shopping-bag"></i>
+                            <i class="fas fa-warehouse"></i>
                         </div>
                         <h4><?php echo $total_products;?><h4>
+                    </div>
+
+                    <div class="box">
+                        <div class="top">
+                            <p>Electricals</p>
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h4><?php echo $electrical_products;?><h4>
+                    </div>
+
+                    <div class="box">
+                        <div class="top">
+                            <p> JNR Bags</p>
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <h4><?php echo $bags_products;?><h4>
+                    </div>
+                    
+                    <div class="box">
+                        <div class="top">
+                            <p> Pending orders</p>
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h4><?php echo $pending_orders;?><h4>
+                    </div>
+
+                    <div class="box">
+                        <div class="top">
+                            <p> Complete orders</p>
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h4><?php echo $complete_orders;?><h4>
                     </div>
 
                     <div class="box">
@@ -165,21 +262,19 @@ if($results && mysqli_num_rows($results)>0){
                     
                     <div class="box">
                         <div class="top">
-                            <p> Total orders</p>
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <h4><?php echo $total_orders;?><h4>
-                    </div>
-
-
-                    <div class="box">
-                        <div class="top">
                             <p> Testimonials</p>
                             <i class="fas fa-star"></i>
                         </div>
                         <h4><?php echo $testimonials;?><h4>
                     </div>
-
+                    
+                    <div class="box">
+                        <div class="top">
+                            <p> Sales made</p>
+                            <i class="fas fa-hand-holding-dollar"></i>
+                        </div>
+                        <h4>Ksh: <?php echo $total_sales;?><h4>
+                    </div>
 
                     
 

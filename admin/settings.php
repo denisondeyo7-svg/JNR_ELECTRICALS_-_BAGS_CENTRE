@@ -4,6 +4,13 @@ include("../backend/config.php");
 $seletct ="SELECT * FROM admin";
 $results = mysqli_query($connection,$seletct);
 
+
+if($results && mysqli_num_rows($results)>0){
+    $row = mysqli_fetch_assoc($results);
+}else{
+    echo"Something went wrong";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,11 +25,14 @@ $results = mysqli_query($connection,$seletct);
     <div class="card-wrapper">
         <h2>Settings</h2>
 
+        
         <div class="admin-card-wrapper">
+
             <div class="admin-card">
                 <div class="name">
-                    <a href="../backend/update.php">Update</a>
-                    <p>Denis</p>
+                    <a href="../backend/update.php"><i class="fas fa-gear"></i>     Update my account</a>
+                    <p><strong>Username</strong>:   <?php echo $row['username'];?></p>
+                    <p><strong>Key</strong>:   <?php echo $row['password'];?></p>
                     <a href="index.php">
                         <button id='exitbtn'><i class="fas fa-sign-out-alt"></i>Exit</button>
                     </a>
@@ -30,6 +40,7 @@ $results = mysqli_query($connection,$seletct);
             </div>
 
         </div>
+        
     </div>
 </body>
 </html>

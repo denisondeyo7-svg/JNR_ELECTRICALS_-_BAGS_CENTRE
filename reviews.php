@@ -42,7 +42,7 @@ $results = mysqli_query($connection, $select_data);
         <?php
         }
     }else{
-        echo"Use the form below to add review to appear on our board";
+        echo"Use the form below to a add review to appear on our board";
     }
     ?>
     
