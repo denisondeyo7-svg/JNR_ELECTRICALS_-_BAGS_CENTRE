@@ -48,14 +48,14 @@ $results = mysqli_query($connection, $select_messages);
                         <img src="dp/<?php echo $row['image']; ?>" id="user_avatar" alt=""> 
                         <div class="names_number"> 
                             <small><?php echo $row['fname']; ?></small> 
-                            <small><?php echo $row['phone']; ?></small> 
+                            <small><?php echo $row['lname']; ?></small> 
                         </div> 
                     </div> 
                     <div class="message"> 
                         <p><?php echo $row['message']; ?></p> 
                         
                     </div> 
-                    <small><?php echo $row['created_at'];?></small>
+                    <small class="time"><?php echo $row['created_at'];?></small>
                 </div> 
                 <br> 
             <?php } 

@@ -42,7 +42,7 @@ $results = mysqli_query($connection, $select_data);
         <?php
         }
     }else{
-        echo"No data available at this moment";
+        echo"Use the form below to add review to appear on our board";
     }
     ?>
     

@@ -116,6 +116,7 @@ if($results && mysqli_num_rows($results)>0){
            <a href="messages.php"><i class="fas fa-bell"></i>   Messages   <sup id="notification">   <?php echo $total_messages ?></sup></a>
            <a href="customers.php"><i class="fas fa-users"></i>   Customers</a>
            <a href=""><i class="fas fa-credit-card"></i>   Payments</a>
+           <a href="testimonials.php"><i class="fas fa-star"></i>   Testimonials    <sup id="notification">   <?php echo $testimonials ?></sup></a>
            <a href="../index.php"><i class="fas fa-users"></i>   Clients page</a>
            <a href="settings.php"><i class="fas fa-cog"></i>   Settings</a>
         </div>
